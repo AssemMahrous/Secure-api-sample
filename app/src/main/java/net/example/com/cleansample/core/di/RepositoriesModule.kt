@@ -16,15 +16,17 @@
 
 package net.example.com.cleansample.core.di
 
+import dagger.Binds
 import dagger.Module
+import net.example.com.cleansample.modules.fortune.data.FortuneRepository
+import net.example.com.cleansample.modules.fortune.data.FortuneRepositoryInterface
+import javax.inject.Singleton
 
 
 @Suppress("unused")
 @Module
 abstract class RepositoriesModule {
-//    @Binds
-//    @Singleton
-//    abstract fun bindCategoryRepository(categoryRepository: CategoryRepository): CategoryRepositoryInterface
-
-
+    @Binds
+    @Singleton
+    abstract fun bindFortuneRepository(fortuneRepository: FortuneRepository): FortuneRepositoryInterface
 }

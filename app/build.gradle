@@ -23,9 +23,17 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
-    externalNativeBuild {
-        cmake {
-            path 'CMakeLists.txt'
+
+    flavorDimensions 'default'
+    productFlavors {
+        development {
+            flavorDimensions 'default'
+            buildConfigField 'String', 'SERVER_URL', '"http://api.acme.international/"'
+            versionNameSuffix ".development"
+        }
+        production {
+            dimension = 'default'
+            buildConfigField 'String', 'SERVER_URL', '"http://api.acme.international/"'
         }
     }
     compileOptions {

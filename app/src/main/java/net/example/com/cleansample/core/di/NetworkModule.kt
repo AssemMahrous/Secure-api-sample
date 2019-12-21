@@ -14,10 +14,6 @@ import javax.inject.Singleton
 
 @Module
 class NetworkModule {
-    init {
-        System.loadLibrary("native-lib")
-    }
-
     @Singleton
     @Provides
     fun provideRetrofit(
@@ -26,7 +22,7 @@ class NetworkModule {
         gson: Gson
     ): Retrofit {
         return Retrofit.Builder()
-            .baseUrl(getAPIKey())
+            .baseUrl(BuildConfig.SERVER_URL)
             .addConverterFactory(GsonConverterFactory.create(gson))
             .addCallAdapterFactory(adapterFactory)
             .client(okHttpClient)
@@ -52,7 +48,4 @@ class NetworkModule {
     @Provides
     fun provideRxErrorHandlingCallAdapterFactory(): RxErrorHandlingCallAdapterFactory =
         RxErrorHandlingCallAdapterFactory.create()
-
-    external fun getAPIKey(): String
-
 }

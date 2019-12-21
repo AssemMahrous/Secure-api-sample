@@ -1,10 +1,8 @@
-package net.example.com.cleansample.core.data
+package net.example.com.cleansample.modules.fortune.data
 
 import io.reactivex.Single
 import net.example.com.cleansample.modules.fortune.entities.FortuneResponse
-import retrofit2.http.GET
 
-interface ApiRequests {
-    @GET("fortune")
+interface FortuneRepositoryInterface {
     fun getFortune(): Single<FortuneResponse>
 }
